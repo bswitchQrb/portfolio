@@ -4,32 +4,19 @@ const skillCategories = [
     title: "Frontend",
     icon: "&#9670;",
     color: "cyan",
-    skills: [
-      { name: "TypeScript", level: 85 },
-      { name: "React", level: 80 },
-      { name: "Vue.js", level: 80 },
-      { name: "HTML / CSS", level: 90 },
-    ],
+    skills: ["TypeScript", "React", "Vue.js", "HTML / CSS"],
   },
   {
     title: "Backend",
     icon: "&#9672;",
     color: "pink",
-    skills: [
-      { name: "Java / Spring Boot", level: 85 },
-      { name: "SQL / DB", level: 80 },
-    ],
+    skills: ["Java / Spring Boot", "SQL / DB"],
   },
   {
     title: "DevOps & Cloud",
     icon: "&#9674;",
     color: "purple",
-    skills: [
-      { name: "AWS", level: 80 },
-      { name: "Docker", level: 75 },
-      { name: "Git", level: 90 },
-      { name: "CI/CD", level: 75 },
-    ],
+    skills: ["AWS", "Docker", "Git", "CI/CD"],
   },
 ];
 ---
@@ -45,20 +32,9 @@ const skillCategories = [
             <span class="skill-icon" set:html={category.icon} />
             <h3 class="skill-category-title">{category.title}</h3>
           </div>
-          <div class="skill-list">
+          <div class="skill-tags">
             {category.skills.map((skill) => (
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">{skill.name}</span>
-                  <span class="skill-percent">{skill.level}%</span>
-                </div>
-                <div class="skill-bar">
-                  <div
-                    class={`skill-fill skill-fill--${category.color}`}
-                    style={`--fill-width: ${skill.level}%`}
-                  />
-                </div>
-              </div>
+              <span class={`skill-tag skill-tag--${category.color}`}>{skill}</span>
             ))}
           </div>
         </div>
@@ -82,7 +58,6 @@ const skillCategories = [
 </section>
 
 <script>
-  // Intersection Observer for skill bar animation
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -171,61 +146,53 @@ const skillCategories = [
   .skill-card--pink .skill-category-title { color: var(--neon-pink); }
   .skill-card--purple .skill-category-title { color: var(--neon-purple); }
 
-  .skill-list {
+  .skill-tags {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.6rem;
   }
 
-  .skill-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.3rem;
-  }
-
-  .skill-name {
+  .skill-tag {
     font-family: var(--font-mono);
     font-size: 0.8rem;
-    color: var(--text-primary);
+    padding: 0.45rem 1rem;
+    border-radius: 4px;
+    border: 1px solid;
+    transition: all 0.3s ease;
+    cursor: default;
   }
 
-  .skill-percent {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-secondary);
+  .skill-tag--cyan {
+    color: var(--neon-cyan);
+    border-color: rgba(0, 245, 255, 0.25);
+    background: rgba(0, 245, 255, 0.05);
   }
 
-  .skill-bar {
-    height: 3px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 2px;
-    overflow: hidden;
+  .skill-tag--cyan:hover {
+    background: rgba(0, 245, 255, 0.12);
+    box-shadow: 0 0 12px rgba(0, 245, 255, 0.15);
   }
 
-  .skill-fill {
-    height: 100%;
-    width: 0;
-    border-radius: 2px;
-    transition: width 1s ease-out 0.3s;
+  .skill-tag--pink {
+    color: var(--neon-pink);
+    border-color: rgba(255, 45, 149, 0.25);
+    background: rgba(255, 45, 149, 0.05);
   }
 
-  .skill-card.animate .skill-fill {
-    width: var(--fill-width);
+  .skill-tag--pink:hover {
+    background: rgba(255, 45, 149, 0.12);
+    box-shadow: 0 0 12px rgba(255, 45, 149, 0.15);
   }
 
-  .skill-fill--cyan {
-    background: linear-gradient(90deg, var(--neon-cyan), transparent);
-    box-shadow: 0 0 8px var(--neon-cyan);
+  .skill-tag--purple {
+    color: var(--neon-purple);
+    border-color: rgba(180, 77, 255, 0.25);
+    background: rgba(180, 77, 255, 0.05);
   }
 
-  .skill-fill--pink {
-    background: linear-gradient(90deg, var(--neon-pink), transparent);
-    box-shadow: 0 0 8px var(--neon-pink);
-  }
-
-  .skill-fill--purple {
-    background: linear-gradient(90deg, var(--neon-purple), transparent);
-    box-shadow: 0 0 8px var(--neon-purple);
+  .skill-tag--purple:hover {
+    background: rgba(180, 77, 255, 0.12);
+    box-shadow: 0 0 12px rgba(180, 77, 255, 0.15);
   }
 
   /* Tech Tags */
