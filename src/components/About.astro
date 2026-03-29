@@ -1,0 +1,203 @@
+---
+---
+
+<section id="about" class="section">
+  <div class="container">
+    <h2 class="section-title">About</h2>
+
+    <div class="about-grid">
+      <div class="about-avatar-wrap">
+        <div class="avatar-frame">
+          <div class="avatar-placeholder">
+            <img
+              src="https://avatars.githubusercontent.com/u/77537912?v=4"
+              alt="bee2"
+              class="avatar-img"
+            />
+          </div>
+          <div class="avatar-glow"></div>
+        </div>
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          Available for work
+        </div>
+      </div>
+
+      <div class="about-text">
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <span class="terminal-dot dot-red"></span>
+            <span class="terminal-dot dot-yellow"></span>
+            <span class="terminal-dot dot-green"></span>
+            <span class="terminal-title">about.json</span>
+          </div>
+          <div class="terminal-body">
+            <pre><code><span class="json-brace">&#123;</span>
+  <span class="json-key">"name"</span>: <span class="json-string">"bee2"</span>,
+  <span class="json-key">"role"</span>: <span class="json-string">"Full-Stack Engineer"</span>,
+  <span class="json-key">"location"</span>: <span class="json-string">"Tokyo, Japan"</span>,
+  <span class="json-key">"interests"</span>: <span class="json-brace">[</span>
+    <span class="json-string">"Web Development"</span>,
+    <span class="json-string">"Cloud / AWS"</span>,
+    <span class="json-string">"AI / Claude"</span>,
+    <span class="json-string">"Docker"</span>
+  <span class="json-brace">]</span>,
+  <span class="json-key">"motto"</span>: <span class="json-string">"Build everything, learn everything."</span>
+<span class="json-brace">&#125;</span></code></pre>
+          </div>
+        </div>
+
+        <p class="about-description">
+          フロントエンドからバックエンド、インフラまで何でも触るフルスタックエンジニア。
+          Spring BootでのAPI開発、React/Vue.jsでのフロントエンド、AWSでのクラウド構築、
+          WSL + Docker でのLinux開発環境、そしてClaudeを活用したAI駆動開発まで。
+          気になった技術はとりあえず試してみるスタイルで日々開発しています。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-avatar-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .avatar-frame {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+
+  .avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: var(--bg-card);
+    border: 2px solid var(--neon-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: border-glow 6s ease-in-out infinite;
+    overflow: hidden;
+  }
+
+  .avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .avatar-glow {
+    position: absolute;
+    inset: -20px;
+    border-radius: 20px;
+    background: radial-gradient(circle, rgba(0, 245, 255, 0.1) 0%, transparent 70%);
+    z-index: -1;
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
+  .status-badge {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--neon-green);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    border-radius: 20px;
+    background: rgba(57, 255, 20, 0.05);
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--neon-green);
+    box-shadow: 0 0 6px var(--neon-green);
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  /* Terminal */
+  .terminal-window {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 245, 255, 0.15);
+    background: rgba(10, 10, 15, 0.8);
+    margin-bottom: 2rem;
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+    background: rgba(26, 26, 46, 0.8);
+    border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+  }
+
+  .terminal-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .dot-red { background: #ff5f57; }
+  .dot-yellow { background: #ffbd2e; }
+  .dot-green { background: #28c840; }
+
+  .terminal-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-left: 0.5rem;
+  }
+
+  .terminal-body {
+    padding: 1.5rem;
+    overflow-x: auto;
+  }
+
+  .terminal-body pre {
+    margin: 0;
+  }
+
+  .terminal-body code {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+
+  .json-brace { color: var(--text-secondary); }
+  .json-key { color: var(--neon-cyan); }
+  .json-string { color: var(--neon-green); }
+
+  .about-description {
+    color: var(--text-secondary);
+    line-height: 2;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .about-avatar-wrap {
+      align-items: center;
+    }
+  }
+</style>

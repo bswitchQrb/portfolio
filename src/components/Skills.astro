@@ -1,0 +1,276 @@
+---
+const skillCategories = [
+  {
+    title: "Frontend",
+    icon: "&#9670;",
+    color: "cyan",
+    skills: [
+      { name: "TypeScript", level: 85 },
+      { name: "React", level: 80 },
+      { name: "Vue.js", level: 80 },
+      { name: "HTML / CSS", level: 90 },
+    ],
+  },
+  {
+    title: "Backend",
+    icon: "&#9672;",
+    color: "pink",
+    skills: [
+      { name: "Java / Spring Boot", level: 85 },
+      { name: "SQL / DB", level: 80 },
+    ],
+  },
+  {
+    title: "DevOps & Cloud",
+    icon: "&#9674;",
+    color: "purple",
+    skills: [
+      { name: "AWS", level: 80 },
+      { name: "Docker", level: 75 },
+      { name: "Git", level: 90 },
+      { name: "CI/CD", level: 75 },
+    ],
+  },
+];
+---
+
+<section id="skills" class="section">
+  <div class="container">
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills-grid">
+      {skillCategories.map((category) => (
+        <div class={`skill-card skill-card--${category.color}`}>
+          <div class="skill-card-header">
+            <span class="skill-icon" set:html={category.icon} />
+            <h3 class="skill-category-title">{category.title}</h3>
+          </div>
+          <div class="skill-list">
+            {category.skills.map((skill) => (
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">{skill.name}</span>
+                  <span class="skill-percent">{skill.level}%</span>
+                </div>
+                <div class="skill-bar">
+                  <div
+                    class={`skill-fill skill-fill--${category.color}`}
+                    style={`--fill-width: ${skill.level}%`}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Tech tags -->
+    <div class="tech-tags">
+      <h3 class="tags-title">Also experienced with</h3>
+      <div class="tags-wrap">
+        {[
+          "Astro", "Svelte", "Sass", "Prisma", "Redis",
+          "Firebase", "Vercel", "Nginx", "Jest", "Cypress",
+          "Figma", "Storybook", "GitHub Actions", "Terraform",
+        ].map((tag) => (
+          <span class="tech-tag">{tag}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Intersection Observer for skill bar animation
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  document.querySelectorAll('.skill-card').forEach((card) => {
+    observer.observe(card);
+  });
+</script>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .skill-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(0, 245, 255, 0.1);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .skill-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .skill-card:nth-child(1).animate { transition-delay: 0s; }
+  .skill-card:nth-child(2).animate { transition-delay: 0.15s; }
+  .skill-card:nth-child(3).animate { transition-delay: 0.3s; }
+
+  .skill-card--cyan:hover {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.1);
+  }
+
+  .skill-card--pink:hover {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 30px rgba(255, 45, 149, 0.1);
+  }
+
+  .skill-card--purple:hover {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 30px rgba(180, 77, 255, 0.1);
+  }
+
+  .skill-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .skill-icon {
+    font-size: 1.2rem;
+  }
+
+  .skill-card--cyan .skill-icon { color: var(--neon-cyan); }
+  .skill-card--pink .skill-icon { color: var(--neon-pink); }
+  .skill-card--purple .skill-icon { color: var(--neon-purple); }
+
+  .skill-category-title {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .skill-card--cyan .skill-category-title { color: var(--neon-cyan); }
+  .skill-card--pink .skill-category-title { color: var(--neon-pink); }
+  .skill-card--purple .skill-category-title { color: var(--neon-purple); }
+
+  .skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.3rem;
+  }
+
+  .skill-name {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-primary);
+  }
+
+  .skill-percent {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+
+  .skill-bar {
+    height: 3px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    width: 0;
+    border-radius: 2px;
+    transition: width 1s ease-out 0.3s;
+  }
+
+  .skill-card.animate .skill-fill {
+    width: var(--fill-width);
+  }
+
+  .skill-fill--cyan {
+    background: linear-gradient(90deg, var(--neon-cyan), transparent);
+    box-shadow: 0 0 8px var(--neon-cyan);
+  }
+
+  .skill-fill--pink {
+    background: linear-gradient(90deg, var(--neon-pink), transparent);
+    box-shadow: 0 0 8px var(--neon-pink);
+  }
+
+  .skill-fill--purple {
+    background: linear-gradient(90deg, var(--neon-purple), transparent);
+    box-shadow: 0 0 8px var(--neon-purple);
+  }
+
+  /* Tech Tags */
+  .tech-tags {
+    text-align: center;
+  }
+
+  .tags-title {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+  }
+
+  .tags-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .tech-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+
+  .tech-tag:hover {
+    color: var(--neon-cyan);
+    border-color: rgba(0, 245, 255, 0.3);
+    background: rgba(0, 245, 255, 0.05);
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

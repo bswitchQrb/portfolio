@@ -1,0 +1,257 @@
+---
+---
+
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-badge">PORTFOLIO</div>
+    <h1 class="hero-title">
+      <span class="line-1">Hello, I'm</span>
+      <span class="line-2">
+        <span class="name-highlight">bee2</span>
+      </span>
+    </h1>
+    <div class="hero-typing">
+      <span class="typing-prefix">&gt;</span>
+      <span class="typing-text">Full-Stack Engineer</span>
+      <span class="cursor">_</span>
+    </div>
+    <p class="hero-description">
+      Webもインフラも、気になったら何でも触ってみるタイプ。<br />
+      フロントからバックエンド、AWSまで、<br class="sp-only" />
+      いろいろ作るのが好きなフルスタックエンジニアです。
+    </p>
+    <div class="hero-actions">
+      <a href="#about" class="btn btn-primary">
+        <span class="btn-text">About Me</span>
+        <span class="btn-icon">&#8595;</span>
+      </a>
+      <a href="https://github.com/bswitchQrb" target="_blank" rel="noopener" class="btn btn-ghost">
+        <span class="btn-text">GitHub</span>
+        <span class="btn-icon">&#8599;</span>
+      </a>
+    </div>
+
+    <!-- Decorative elements -->
+    <div class="hero-decoration">
+      <div class="deco-circle deco-1"></div>
+      <div class="deco-circle deco-2"></div>
+      <div class="deco-line deco-3"></div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll</span>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 5rem;
+  }
+
+  .hero-content {
+    position: relative;
+  }
+
+  .hero-badge {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--neon-pink);
+    letter-spacing: 0.4em;
+    margin-bottom: 1.5rem;
+    animation: slide-up 0.8s ease-out;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .line-1 {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.4em;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    animation: slide-up 0.8s ease-out 0.1s both;
+  }
+
+  .line-2 {
+    display: block;
+    animation: slide-up 0.8s ease-out 0.2s both;
+  }
+
+  .name-highlight {
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+  }
+
+  .hero-typing {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    color: var(--neon-green);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: slide-up 0.8s ease-out 0.3s both;
+  }
+
+  .typing-prefix {
+    color: var(--neon-pink);
+  }
+
+  .cursor {
+    animation: blink-caret 1s step-end infinite;
+    color: var(--neon-cyan);
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    max-width: 540px;
+    line-height: 1.8;
+    animation: slide-up 0.8s ease-out 0.4s both;
+  }
+
+  .sp-only {
+    display: none;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    animation: slide-up 0.8s ease-out 0.5s both;
+  }
+
+  .btn {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05em;
+  }
+
+  .btn-primary {
+    background: transparent;
+    color: var(--neon-cyan);
+    border: 1px solid var(--neon-cyan);
+    box-shadow: var(--neon-cyan-glow);
+  }
+
+  .btn-primary:hover {
+    background: rgba(0, 245, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px #00f5ff44, 0 0 40px #00f5ff22, 0 0 60px #00f5ff11;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid rgba(136, 136, 170, 0.3);
+  }
+
+  .btn-ghost:hover {
+    color: var(--neon-pink);
+    border-color: var(--neon-pink);
+    box-shadow: var(--neon-pink-glow);
+    transform: translateY(-2px);
+  }
+
+  /* Decorations */
+  .hero-decoration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    pointer-events: none;
+  }
+
+  .deco-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid;
+  }
+
+  .deco-1 {
+    width: 200px;
+    height: 200px;
+    top: 20px;
+    right: 0;
+    border-color: rgba(0, 245, 255, 0.15);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .deco-2 {
+    width: 120px;
+    height: 120px;
+    top: 80px;
+    right: 60px;
+    border-color: rgba(255, 45, 149, 0.15);
+    animation: float 6s ease-in-out infinite 1s;
+  }
+
+  .deco-3 {
+    position: absolute;
+    width: 1px;
+    height: 150px;
+    top: 0;
+    right: 100px;
+    background: linear-gradient(180deg, var(--neon-purple), transparent);
+    opacity: 0.3;
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: slide-up 0.8s ease-out 0.8s both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, var(--neon-cyan), transparent);
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  .scroll-text {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+
+  @media (max-width: 768px) {
+    .hero-decoration {
+      display: none;
+    }
+    .sp-only {
+      display: inline;
+    }
+  }
+</style>
