@@ -1,4 +1,5 @@
 ---
+import { SITE } from '../config';
 ---
 
 <section class="hero">
@@ -7,12 +8,12 @@
     <h1 class="hero-title">
       <span class="line-1">Hello, I'm</span>
       <span class="line-2">
-        <span class="name-highlight">bee2</span>
+        <span class="name-highlight">{SITE.name}</span>
       </span>
     </h1>
     <div class="hero-typing">
       <span class="typing-prefix">&gt;</span>
-      <span class="typing-text">Full-Stack Engineer</span>
+      <span class="typing-text">{SITE.role}</span>
       <span class="cursor">_</span>
     </div>
     <p class="hero-description">
@@ -25,7 +26,7 @@
         <span class="btn-text">About Me</span>
         <span class="btn-icon">&#8595;</span>
       </a>
-      <a href="https://github.com/bswitchQrb" target="_blank" rel="noopener" class="btn btn-ghost">
+      <a href={SITE.github} target="_blank" rel="noopener" class="btn btn-ghost">
         <span class="btn-text">GitHub</span>
         <span class="btn-icon">&#8599;</span>
       </a>
