@@ -10,9 +10,10 @@ Product Engineer / Osaka → Tokyo
 
 ## Skills
 
-- **Frontend**: TypeScript, React
-- **Backend**: Java / Spring Boot, MySQL, PostgreSQL
-- **DevOps & Tools**: AWS, Docker, Terraform, Git, Claude Code
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=ts,react,java,spring,mysql,postgres,supabase,aws,docker,terraform,linux,figma&perline=12" alt="TypeScript, React, Java, Spring, MySQL, PostgreSQL, Supabase, AWS, Docker, Terraform, Linux, Figma" />
+</p>
+<p align="center">and Claude Code</p>
 
 ## Certifications
 
