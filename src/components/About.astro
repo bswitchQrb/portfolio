@@ -22,9 +22,9 @@ const stats = [
           <img src={SITE.avatarUrl} alt={SITE.name} class="avatar-img" width="160" height="160" />
         </div>
         <p class="profile-name">{SITE.name}</p>
-        <p class="status-badge">
-          <span class="status-dot" aria-hidden="true"></span>
-          Available for work
+        <p class="hp" aria-hidden="true">
+          <span class="hp-key">HP</span>
+          <span class="hp-hearts">♥♥♥♥♥</span>
         </p>
       </div>
 
@@ -92,21 +92,23 @@ const stats = [
     color: var(--text);
   }
 
-  .status-badge {
+  .hp {
     font-family: var(--font-pixel);
-    font-size: 0.85rem;
-    color: var(--green);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.2rem 0.75rem;
-    border: 2px solid var(--green);
+    gap: 0.6rem;
   }
 
-  .status-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--green);
+  .hp-key {
+    font-size: 0.8rem;
+    color: var(--bg-deep);
+    background: var(--coral);
+    padding: 0 0.4rem;
+  }
+
+  .hp-hearts {
+    color: var(--coral);
+    letter-spacing: 0.15em;
   }
 
   .stats {
