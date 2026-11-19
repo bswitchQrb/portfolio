@@ -1,9 +1,9 @@
 export const SITE = {
   name: "bswitchQrb",
-  role: "Full-Stack Engineer",
+  role: "Product Engineer",
   location: "Tokyo, Japan",
+  hometown: "Osaka, Japan",
   company: "Project Management SaaS since 2024",
-  motto: "Build everything, learn everything.",
   interests: ["Web Development", "Cloud / AWS", "AI / Claude", "Docker"],
   hobbies: ["Ramen", "Onsen", "Sauna"],
   github: "https://github.com/bswitchQrb",
@@ -15,7 +15,7 @@ export const EXPERIENCE = [
   {
     period: "2024.04 — Present",
     company: "Project Management SaaS Company",
-    roles: ["Full-Stack Engineer", "Group Leader"],
+    roles: ["Product Engineer", "Group Leader"],
     summary:
       "自社プロダクトのプロジェクト管理SaaSを開発しています。最初は不具合修正や機能追加の実装から始めて、今はグループリーダーとして要件定義やレビューも担当しています。",
     phases: ["要件定義", "仕様設計", "DB設計", "実装", "コードレビュー", "テスト・QA", "リリース", "運用保守"],

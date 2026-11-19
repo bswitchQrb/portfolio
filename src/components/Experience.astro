@@ -4,43 +4,39 @@ import { EXPERIENCE, CERTIFICATIONS } from '../config';
 
 <section id="experience" class="section">
   <div class="container">
-    <h2 class="section-title">Experience</h2>
+    <h2 class="section-title">QUEST LOG<span class="section-sub">Experience</span></h2>
 
-    <div class="timeline">
+    <div class="quests">
       {EXPERIENCE.map((exp) => (
-        <article class="exp-card">
-          <span class="timeline-node" aria-hidden="true"></span>
+        <article class="window quest">
+          <span class="window-label">{exp.period}</span>
 
-          <div class="exp-header">
-            <span class="exp-period">{exp.period}</span>
-            <div class="exp-roles">
-              {exp.roles.map((role, idx) => (
-                <>
-                  {idx > 0 && <span class="role-arrow">&rarr;</span>}
-                  <span class="role-chip">{role}</span>
-                </>
-              ))}
-            </div>
-          </div>
+          <h3 class="quest-company">{exp.company}</h3>
+          <p class="quest-roles">
+            {exp.roles.map((role, idx) => (
+              <>
+                {idx > 0 && <span class="role-arrow" aria-label="から">▶</span>}
+                <span class="chip chip--coral">{role}</span>
+              </>
+            ))}
+          </p>
+          <p class="quest-summary">{exp.summary}</p>
 
-          <h3 class="exp-company">{exp.company}</h3>
-          <p class="exp-summary">{exp.summary}</p>
-
-          <div class="exp-block">
-            <h4 class="exp-heading">Phases</h4>
-            <div class="phase-row">
+          <div class="quest-block">
+            <h4 class="block-heading">PHASES</h4>
+            <div class="chip-row">
               {exp.phases.map((phase) => (
-                <span class="phase-chip">{phase}</span>
+                <span class="chip chip--sky">{phase}</span>
               ))}
             </div>
           </div>
 
-          <div class="exp-block">
-            <h4 class="exp-heading">Highlights</h4>
+          <div class="quest-block">
+            <h4 class="block-heading">HIGHLIGHTS</h4>
             <ul class="highlight-grid">
               {exp.highlights.map((h) => (
                 <li class="highlight">
-                  <span class="highlight-icon" aria-hidden="true">&#9656;</span>
+                  <span class="highlight-icon" aria-hidden="true">★</span>
                   <div>
                     <p class="highlight-title">{h.title}</p>
                     <p class="highlight-desc">{h.desc}</p>
@@ -50,11 +46,11 @@ import { EXPERIENCE, CERTIFICATIONS } from '../config';
             </ul>
           </div>
 
-          <div class="exp-block">
-            <h4 class="exp-heading">Tech Stack</h4>
-            <div class="phase-row">
+          <div class="quest-block">
+            <h4 class="block-heading">EQUIPMENT</h4>
+            <div class="chip-row">
               {exp.stack.map((tech) => (
-                <span class="stack-chip">{tech}</span>
+                <span class="chip chip--lilac">{tech}</span>
               ))}
             </div>
           </div>
@@ -62,12 +58,12 @@ import { EXPERIENCE, CERTIFICATIONS } from '../config';
       ))}
     </div>
 
-    <div class="cert">
-      <h3 class="cert-title">Certifications</h3>
+    <div class="window cert">
+      <span class="window-label">ACHIEVEMENTS</span>
       <ul class="cert-list">
         {CERTIFICATIONS.map((c) => (
           <li class="cert-item">
-            <span class="cert-badge" aria-hidden="true">&#10022;</span>
+            <span class="cert-icon" aria-hidden="true">◆</span>
             <span class="cert-name">{c.name}</span>
             <span class="cert-date">{c.date}</span>
           </li>
@@ -78,140 +74,58 @@ import { EXPERIENCE, CERTIFICATIONS } from '../config';
 </section>
 
 <style>
-  .timeline {
-    position: relative;
-    padding-left: 2rem;
-    border-left: 1px solid rgba(0, 245, 255, 0.2);
+  .quests {
+    display: grid;
+    gap: 3rem;
     margin-bottom: 3rem;
   }
 
-  .exp-card {
-    position: relative;
-    background: var(--bg-card);
-    border: 1px solid rgba(0, 245, 255, 0.12);
-    border-radius: 12px;
-    padding: 2.5rem;
-    transition: all 0.4s ease;
+  .quest {
+    padding-top: 2.5rem;
   }
 
-  .exp-card:hover {
-    border-color: rgba(0, 245, 255, 0.3);
-    box-shadow: 0 0 40px rgba(0, 245, 255, 0.06);
-  }
-
-  .timeline-node {
-    position: absolute;
-    left: calc(-2rem - 6px);
-    top: 2.6rem;
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    background: var(--neon-cyan);
-    box-shadow: var(--neon-cyan-glow);
-    animation: glow-pulse 2s ease-in-out infinite;
-  }
-
-  .exp-header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .exp-period {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--neon-green);
-    letter-spacing: 0.1em;
-  }
-
-  .exp-roles {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .role-chip {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--neon-pink);
-    padding: 0.3rem 0.8rem;
-    border: 1px solid rgba(255, 45, 149, 0.3);
-    border-radius: 20px;
-    background: rgba(255, 45, 149, 0.05);
-  }
-
-  .role-arrow {
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-  }
-
-  .exp-company {
+  .quest-company {
+    font-family: var(--font-pixel);
+    font-weight: 400;
     font-size: 1.5rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text);
     margin-bottom: 0.75rem;
   }
 
-  .exp-summary {
-    color: var(--text-secondary);
-    line-height: 1.9;
-    font-size: 0.95rem;
-    margin-bottom: 2rem;
-  }
-
-  .exp-block {
-    padding-top: 1.5rem;
-    margin-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  .exp-heading {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 1rem;
-  }
-
-  .phase-row {
+  .quest-roles {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
   }
 
-  .phase-chip,
-  .stack-chip {
-    font-family: var(--font-mono);
+  .role-arrow {
     font-size: 0.7rem;
-    padding: 0.3rem 0.7rem;
-    border-radius: 4px;
-    border: 1px solid;
+    color: var(--text-dim);
   }
 
-  .phase-chip {
-    color: var(--neon-cyan);
-    border-color: rgba(0, 245, 255, 0.25);
-    background: rgba(0, 245, 255, 0.05);
+  .quest-summary {
+    line-height: 2;
   }
 
-  .stack-chip {
-    color: var(--neon-purple);
-    border-color: rgba(180, 77, 255, 0.25);
-    background: rgba(180, 77, 255, 0.05);
+  .quest-block {
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 2px dotted var(--line-dim);
+  }
+
+  .block-heading {
+    font-family: var(--font-pixel);
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
   }
 
   .highlight-grid {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem 2rem;
@@ -223,83 +137,64 @@ import { EXPERIENCE, CERTIFICATIONS } from '../config';
   }
 
   .highlight-icon {
-    color: var(--neon-pink);
+    color: var(--gold);
     flex-shrink: 0;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .highlight-title {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--text-primary);
-    margin-bottom: 0.25rem;
+    font-family: var(--font-pixel);
+    color: var(--text);
+    margin-bottom: 0.2rem;
   }
 
   .highlight-desc {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.8;
   }
 
-  /* Certifications */
-  .cert-title {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 1rem;
+  .cert {
+    padding-top: 2.25rem;
   }
 
   .cert-list {
     list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 0.75rem;
   }
 
   .cert-item {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
+    align-items: center;
     gap: 0.75rem;
-    padding: 1rem 1.25rem;
-    background: var(--bg-card);
-    border: 1px solid rgba(57, 255, 20, 0.2);
-    border-radius: 8px;
+    font-family: var(--font-pixel);
   }
 
-  .cert-badge {
-    color: var(--neon-green);
-    text-shadow: 0 0 6px var(--neon-green);
+  .cert-icon {
+    color: var(--green);
   }
 
   .cert-name {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    color: var(--text-primary);
+    color: var(--text);
   }
 
   .cert-date {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-secondary);
     margin-left: auto;
+    color: var(--text-dim);
+    font-size: 0.9rem;
   }
 
-  @media (max-width: 768px) {
-    .timeline {
+  @media (max-width: 760px) {
+    .window.quest,
+    .window.cert {
       padding-left: 1.25rem;
+      padding-right: 1.25rem;
     }
 
-    .timeline-node {
-      left: calc(-1.25rem - 6px);
-    }
-
-    .exp-card {
-      padding: 1.5rem;
+    .quest-company {
+      font-size: 1.25rem;
     }
 
     .highlight-grid {

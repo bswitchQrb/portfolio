@@ -1,187 +1,89 @@
 ---
 const skillCategories = [
   {
-    title: "Frontend",
-    icon: "&#9670;",
-    color: "cyan",
-    skills: ["TypeScript", "React"],
+    title: 'FRONTEND',
+    color: 'sky',
+    skills: ['TypeScript', 'React'],
   },
   {
-    title: "Backend",
-    icon: "&#9672;",
-    color: "pink",
-    skills: ["Java / Spring Boot", "MySQL", "PostgreSQL"],
+    title: 'BACKEND',
+    color: 'coral',
+    skills: ['Java / Spring Boot', 'MySQL', 'PostgreSQL'],
   },
   {
-    title: "DevOps & Tools",
-    icon: "&#9674;",
-    color: "purple",
-    skills: ["AWS", "Docker", "Terraform", "Git", "Claude Code"],
+    title: 'DEVOPS & TOOLS',
+    color: 'lilac',
+    skills: ['AWS', 'Docker', 'Terraform', 'Git', 'Claude Code'],
   },
 ];
 ---
 
 <section id="skills" class="section">
   <div class="container">
-    <h2 class="section-title">Skills</h2>
+    <h2 class="section-title">SKILLS</h2>
 
     <div class="skills-grid">
       {skillCategories.map((category) => (
-        <div class={`skill-card skill-card--${category.color}`}>
-          <div class="skill-card-header">
-            <span class="skill-icon" set:html={category.icon} />
-            <h3 class="skill-category-title">{category.title}</h3>
-          </div>
-          <div class="skill-tags">
+        <div class={`window skill-window skill-window--${category.color}`}>
+          <span class="window-label">{category.title}</span>
+          <ul class="skill-list">
             {category.skills.map((skill) => (
-              <span class={`skill-tag skill-tag--${category.color}`}>{skill}</span>
+              <li class="skill-item">{skill}</li>
             ))}
-          </div>
+          </ul>
         </div>
       ))}
     </div>
   </div>
 </section>
 
-<script>
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-
-  document.querySelectorAll('.skill-card').forEach((card) => {
-    observer.observe(card);
-  });
-</script>
-
 <style>
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 2.5rem 1.75rem;
   }
 
-  .skill-card {
-    background: var(--bg-card);
-    border: 1px solid rgba(0, 245, 255, 0.1);
-    border-radius: 8px;
-    padding: 2rem;
-    transition: all 0.4s ease;
-    opacity: 0;
-    transform: translateY(20px);
+  .skill-window {
+    padding: 2.25rem 1.5rem 1.5rem;
   }
 
-  .skill-card.animate {
-    opacity: 1;
-    transform: translateY(0);
+  .skill-list {
+    list-style: none;
+    display: grid;
+    gap: 0.35rem;
   }
 
-  .skill-card:nth-child(1).animate { transition-delay: 0s; }
-  .skill-card:nth-child(2).animate { transition-delay: 0.15s; }
-  .skill-card:nth-child(3).animate { transition-delay: 0.3s; }
-
-  .skill-card--cyan:hover {
-    border-color: var(--neon-cyan);
-    box-shadow: 0 0 30px rgba(0, 245, 255, 0.1);
-  }
-
-  .skill-card--pink:hover {
-    border-color: var(--neon-pink);
-    box-shadow: 0 0 30px rgba(255, 45, 149, 0.1);
-  }
-
-  .skill-card--purple:hover {
-    border-color: var(--neon-purple);
-    box-shadow: 0 0 30px rgba(180, 77, 255, 0.1);
-  }
-
-  .skill-card-header {
+  .skill-item {
+    font-family: var(--font-pixel);
+    font-size: 1.05rem;
+    color: var(--text);
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0.2rem 0;
   }
 
-  .skill-icon {
-    font-size: 1.2rem;
+  .skill-item::before {
+    content: '▶';
+    font-size: 0.7em;
+    width: 1.4em;
+    flex-shrink: 0;
+    visibility: hidden;
   }
 
-  .skill-card--cyan .skill-icon { color: var(--neon-cyan); }
-  .skill-card--pink .skill-icon { color: var(--neon-pink); }
-  .skill-card--purple .skill-icon { color: var(--neon-purple); }
-
-  .skill-category-title {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+  .skill-item:hover::before {
+    visibility: visible;
   }
 
-  .skill-card--cyan .skill-category-title { color: var(--neon-cyan); }
-  .skill-card--pink .skill-category-title { color: var(--neon-pink); }
-  .skill-card--purple .skill-category-title { color: var(--neon-purple); }
+  .skill-window--sky .skill-item::before { color: var(--sky); }
+  .skill-window--coral .skill-item::before { color: var(--coral); }
+  .skill-window--lilac .skill-item::before { color: var(--lilac); }
 
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-  }
+  .skill-window--sky .window-label { color: var(--sky); }
+  .skill-window--coral .window-label { color: var(--coral); }
+  .skill-window--lilac .window-label { color: var(--lilac); }
 
-  .skill-tag {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    padding: 0.45rem 1rem;
-    border-radius: 4px;
-    border: 1px solid;
-    transition: all 0.3s ease;
-    cursor: default;
-  }
-
-  .skill-tag--cyan {
-    color: var(--neon-cyan);
-    border-color: rgba(0, 245, 255, 0.25);
-    background: rgba(0, 245, 255, 0.05);
-  }
-
-  .skill-tag--cyan:hover {
-    background: rgba(0, 245, 255, 0.12);
-    box-shadow: 0 0 12px rgba(0, 245, 255, 0.15);
-  }
-
-  .skill-tag--pink {
-    color: var(--neon-pink);
-    border-color: rgba(255, 45, 149, 0.25);
-    background: rgba(255, 45, 149, 0.05);
-  }
-
-  .skill-tag--pink:hover {
-    background: rgba(255, 45, 149, 0.12);
-    box-shadow: 0 0 12px rgba(255, 45, 149, 0.15);
-  }
-
-  .skill-tag--purple {
-    color: var(--neon-purple);
-    border-color: rgba(180, 77, 255, 0.25);
-    background: rgba(180, 77, 255, 0.05);
-  }
-
-  .skill-tag--purple:hover {
-    background: rgba(180, 77, 255, 0.12);
-    box-shadow: 0 0 12px rgba(180, 77, 255, 0.15);
-  }
-
-
-  @media (max-width: 768px) {
+  @media (max-width: 860px) {
     .skills-grid {
       grid-template-columns: 1fr;
     }
