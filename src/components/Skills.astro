@@ -4,19 +4,19 @@ const skillCategories = [
     title: "Frontend",
     icon: "&#9670;",
     color: "cyan",
-    skills: ["TypeScript", "React", "Vue.js", "HTML / CSS"],
+    skills: ["TypeScript", "React"],
   },
   {
     title: "Backend",
     icon: "&#9672;",
     color: "pink",
-    skills: ["Java / Spring Boot", "SQL / DB"],
+    skills: ["Java / Spring Boot", "MySQL", "PostgreSQL"],
   },
   {
-    title: "DevOps & Cloud",
+    title: "DevOps & Tools",
     icon: "&#9674;",
     color: "purple",
-    skills: ["AWS", "Docker", "Git", "CI/CD"],
+    skills: ["AWS", "Docker", "Terraform", "Git", "Claude Code"],
   },
 ];
 ---
@@ -39,20 +39,6 @@ const skillCategories = [
           </div>
         </div>
       ))}
-    </div>
-
-    <!-- Tech tags -->
-    <div class="tech-tags">
-      <h3 class="tags-title">Also experienced with</h3>
-      <div class="tags-wrap">
-        {[
-          "Astro", "Svelte", "Sass", "Prisma", "Redis",
-          "Firebase", "Vercel", "Nginx", "Jest", "Cypress",
-          "Figma", "Storybook", "GitHub Actions", "Terraform",
-        ].map((tag) => (
-          <span class="tech-tag">{tag}</span>
-        ))}
-      </div>
     </div>
   </div>
 </section>
@@ -80,7 +66,6 @@ const skillCategories = [
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    margin-bottom: 4rem;
   }
 
   .skill-card {
@@ -195,45 +180,6 @@ const skillCategories = [
     box-shadow: 0 0 12px rgba(180, 77, 255, 0.15);
   }
 
-  /* Tech Tags */
-  .tech-tags {
-    text-align: center;
-  }
-
-  .tags-title {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 1.5rem;
-  }
-
-  .tags-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-  }
-
-  .tech-tag {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    padding: 0.4rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.02);
-    transition: all 0.3s ease;
-    cursor: default;
-  }
-
-  .tech-tag:hover {
-    color: var(--neon-cyan);
-    border-color: rgba(0, 245, 255, 0.3);
-    background: rgba(0, 245, 255, 0.05);
-    box-shadow: 0 0 10px rgba(0, 245, 255, 0.1);
-  }
 
   @media (max-width: 768px) {
     .skills-grid {
