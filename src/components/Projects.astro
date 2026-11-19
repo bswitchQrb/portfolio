@@ -1,171 +1,118 @@
 ---
+const features = [
+  {
+    icon: '♫',
+    title: '5つのクイズモード',
+    desc: 'ト音記号・ヘ音記号の単音/和音、コード名当てに対応',
+  },
+  {
+    icon: '⚙',
+    title: '弱点克服アルゴリズム',
+    desc: '正答率に応じた重み付き出題で、苦手な音を重点的に学習',
+  },
+  {
+    icon: '⚖',
+    title: 'フルスタック構成',
+    desc: 'React + Spring Boot + PostgreSQL のクリーンアーキテクチャ',
+  },
+];
+
+const techGroups = [
+  { label: 'Frontend', color: 'sky', items: ['React 19', 'TypeScript', 'Vite', 'VexFlow'] },
+  { label: 'Backend', color: 'coral', items: ['Spring Boot 3', 'Java 17', 'jOOQ', 'JWT'] },
+  { label: 'Infra', color: 'lilac', items: ['PostgreSQL', 'Docker', 'Render', 'Supabase'] },
+];
 ---
 
 <section id="projects" class="section">
   <div class="container">
-    <h2 class="section-title">Projects</h2>
+    <h2 class="section-title">SIDE QUEST<span class="section-sub">Projects</span></h2>
 
-    <div class="project-card">
+    <article class="window project">
+      <span class="window-label">PERSONAL PROJECT</span>
+
       <div class="project-header">
-        <div class="project-label">
-          <span class="label-dot"></span>
-          Personal Project
+        <div>
+          <h3 class="project-name">Onpu Quiz</h3>
+          <p class="project-tagline">五線譜の音符をピアノ鍵盤で回答する、音楽学習クイズアプリ</p>
         </div>
         <a
           href="https://onpu.onrender.com/onpu/"
           target="_blank"
           rel="noopener"
-          class="project-link"
+          class="pixel-btn"
         >
-          Live Demo &#8599;
+          Live Demo ↗
         </a>
       </div>
 
-      <h3 class="project-name">Onpu Quiz</h3>
-      <p class="project-tagline">
-        五線譜の音符をピアノ鍵盤で回答する、音楽学習クイズアプリ
-      </p>
-
-      <div class="project-features">
-        <div class="feature">
-          <span class="feature-icon">&#9835;</span>
-          <div>
-            <h4 class="feature-title">5つのクイズモード</h4>
-            <p class="feature-desc">ト音記号・ヘ音記号の単音/和音、コード名当てに対応</p>
-          </div>
-        </div>
-        <div class="feature">
-          <span class="feature-icon">&#9881;</span>
-          <div>
-            <h4 class="feature-title">弱点克服アルゴリズム</h4>
-            <p class="feature-desc">正答率に応じた重み付き出題で、苦手な音を重点的に学習</p>
-          </div>
-        </div>
-        <div class="feature">
-          <span class="feature-icon">&#9878;</span>
-          <div>
-            <h4 class="feature-title">フルスタック構成</h4>
-            <p class="feature-desc">React + Spring Boot + PostgreSQL のクリーンアーキテクチャ</p>
-          </div>
-        </div>
-      </div>
+      <ul class="project-features">
+        {features.map((f) => (
+          <li class="feature">
+            <span class="feature-icon" aria-hidden="true">{f.icon}</span>
+            <div>
+              <p class="feature-title">{f.title}</p>
+              <p class="feature-desc">{f.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
 
       <div class="project-tech">
-        <h4 class="tech-heading">Tech Stack</h4>
+        <h4 class="block-heading">EQUIPMENT</h4>
         <div class="tech-row">
-          <div class="tech-group">
-            <span class="tech-label">Frontend</span>
-            <div class="tech-items">
-              <span class="tech-chip tech-chip--cyan">React 19</span>
-              <span class="tech-chip tech-chip--cyan">TypeScript</span>
-              <span class="tech-chip tech-chip--cyan">Vite</span>
-              <span class="tech-chip tech-chip--cyan">VexFlow</span>
+          {techGroups.map((g) => (
+            <div class="tech-group">
+              <span class="tech-label">{g.label}</span>
+              <div class="chip-row">
+                {g.items.map((item) => (
+                  <span class={`chip chip--${g.color}`}>{item}</span>
+                ))}
+              </div>
             </div>
-          </div>
-          <div class="tech-group">
-            <span class="tech-label">Backend</span>
-            <div class="tech-items">
-              <span class="tech-chip tech-chip--pink">Spring Boot 3</span>
-              <span class="tech-chip tech-chip--pink">Java 17</span>
-              <span class="tech-chip tech-chip--pink">jOOQ</span>
-              <span class="tech-chip tech-chip--pink">JWT</span>
-            </div>
-          </div>
-          <div class="tech-group">
-            <span class="tech-label">Infra</span>
-            <div class="tech-items">
-              <span class="tech-chip tech-chip--purple">PostgreSQL</span>
-              <span class="tech-chip tech-chip--purple">Docker</span>
-              <span class="tech-chip tech-chip--purple">Render</span>
-              <span class="tech-chip tech-chip--purple">Supabase</span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    </div>
+    </article>
   </div>
 </section>
 
 <style>
-  .project-card {
-    background: var(--bg-card);
-    border: 1px solid rgba(0, 245, 255, 0.12);
-    border-radius: 12px;
-    padding: 2.5rem;
-    transition: all 0.4s ease;
-  }
-
-  .project-card:hover {
-    border-color: rgba(0, 245, 255, 0.3);
-    box-shadow: 0 0 40px rgba(0, 245, 255, 0.06);
+  .project {
+    padding-top: 2.5rem;
   }
 
   .project-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .project-label {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--neon-green);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .label-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--neon-green);
-    box-shadow: 0 0 6px var(--neon-green);
-    animation: glow-pulse 2s ease-in-out infinite;
-  }
-
-  .project-link {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--neon-cyan);
-    padding: 0.4rem 1rem;
-    border: 1px solid rgba(0, 245, 255, 0.3);
-    border-radius: 4px;
-    transition: all 0.3s ease;
-  }
-
-  .project-link:hover {
-    background: rgba(0, 245, 255, 0.1);
-    box-shadow: var(--neon-cyan-glow);
-  }
-
-  .project-name {
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.5rem;
-  }
-
-  .project-tagline {
-    color: var(--text-secondary);
-    font-size: 1rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1.5rem;
     margin-bottom: 2rem;
   }
 
-  /* Features */
+  .project-name {
+    font-family: var(--font-pixel);
+    font-weight: 400;
+    font-size: 2rem;
+    color: var(--text);
+    text-shadow: 3px 3px 0 var(--shadow);
+    margin-bottom: 0.4rem;
+  }
+
+  .project-tagline {
+    color: var(--text-dim);
+  }
+
   .project-features {
+    list-style: none;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    margin-bottom: 2.5rem;
-    padding-bottom: 2.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.5rem 0;
+    border-top: 2px dotted var(--line-dim);
+    border-bottom: 2px dotted var(--line-dim);
+    margin-bottom: 1.5rem;
   }
 
   .feature {
@@ -174,98 +121,63 @@
   }
 
   .feature-icon {
-    font-size: 1.5rem;
-    color: var(--neon-purple);
+    font-size: 1.3rem;
+    line-height: 1.4;
+    color: var(--gold);
     flex-shrink: 0;
-    margin-top: 0.1rem;
   }
 
   .feature-title {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-primary);
-    margin-bottom: 0.3rem;
+    font-family: var(--font-pixel);
+    color: var(--text);
+    margin-bottom: 0.2rem;
   }
 
   .feature-desc {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.8;
   }
 
-  /* Tech Stack */
-  .tech-heading {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
+  .block-heading {
+    font-family: var(--font-pixel);
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
     margin-bottom: 1rem;
   }
 
   .tech-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1.5rem 2rem;
   }
 
   .tech-group {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 0.5rem;
   }
 
   .tech-label {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--text-secondary);
-    text-transform: uppercase;
+    font-family: var(--font-pixel);
+    font-size: 0.8rem;
+    color: var(--text-dim);
     letter-spacing: 0.1em;
   }
 
-  .tech-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
+  @media (max-width: 760px) {
+    .window.project {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
 
-  .tech-chip {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    padding: 0.3rem 0.7rem;
-    border-radius: 4px;
-    border: 1px solid;
-  }
+    .project-name {
+      font-size: 1.6rem;
+    }
 
-  .tech-chip--cyan {
-    color: var(--neon-cyan);
-    border-color: rgba(0, 245, 255, 0.25);
-    background: rgba(0, 245, 255, 0.05);
-  }
-
-  .tech-chip--pink {
-    color: var(--neon-pink);
-    border-color: rgba(255, 45, 149, 0.25);
-    background: rgba(255, 45, 149, 0.05);
-  }
-
-  .tech-chip--purple {
-    color: var(--neon-purple);
-    border-color: rgba(180, 77, 255, 0.25);
-    background: rgba(180, 77, 255, 0.05);
-  }
-
-  @media (max-width: 768px) {
     .project-features {
       grid-template-columns: 1fr;
-    }
-
-    .project-card {
-      padding: 1.5rem;
-    }
-
-    .tech-row {
-      flex-direction: column;
     }
   }
 </style>

@@ -1,63 +1,58 @@
 ---
 import { SITE } from '../config';
+
+const stats = [
+  { key: 'NAME', value: SITE.name },
+  { key: 'CLASS', value: SITE.role },
+  { key: 'FROM', value: SITE.hometown },
+  { key: 'HOME', value: SITE.location },
+  { key: 'GUILD', value: SITE.company },
+  { key: 'SKILL TREE', value: SITE.interests.join(' / ') },
+  { key: 'HOBBY', value: SITE.hobbies.join(' / ') },
+];
 ---
 
 <section id="about" class="section">
   <div class="container">
-    <h2 class="section-title">About</h2>
+    <h2 class="section-title">STATUS<span class="section-sub">About</span></h2>
 
     <div class="about-grid">
-      <div class="about-avatar-wrap">
+      <div class="window profile">
         <div class="avatar-frame">
-          <div class="avatar-placeholder">
-            <img
-              src={SITE.avatarUrl}
-              alt={SITE.name}
-              class="avatar-img"
-            />
-          </div>
-          <div class="avatar-glow"></div>
+          <img src={SITE.avatarUrl} alt={SITE.name} class="avatar-img" width="160" height="160" />
         </div>
-        <div class="status-badge">
-          <span class="status-dot"></span>
+        <p class="profile-name">{SITE.name}</p>
+        <p class="status-badge">
+          <span class="status-dot" aria-hidden="true"></span>
           Available for work
-        </div>
-      </div>
-
-      <div class="about-text">
-        <div class="terminal-window">
-          <div class="terminal-header">
-            <span class="terminal-dot dot-red"></span>
-            <span class="terminal-dot dot-yellow"></span>
-            <span class="terminal-dot dot-green"></span>
-            <span class="terminal-title">about.json</span>
-          </div>
-          <div class="terminal-body">
-            <pre><code set:html={`<span class="json-brace">{</span>
-  <span class="json-key">"name"</span>: <span class="json-string">"${SITE.name}"</span>,
-  <span class="json-key">"role"</span>: <span class="json-string">"${SITE.role}"</span>,
-  <span class="json-key">"location"</span>: <span class="json-string">"${SITE.location}"</span>,
-  <span class="json-key">"interests"</span>: <span class="json-brace">[</span>
-${SITE.interests.map((i, idx) => `    <span class="json-string">"${i}"</span>${idx < SITE.interests.length - 1 ? ',' : ''}`).join('\n')}
-  <span class="json-brace">]</span>,
-  <span class="json-key">"company"</span>: <span class="json-string">"${SITE.company}"</span>,
-  <span class="json-key">"hobbies"</span>: <span class="json-brace">[</span>
-${SITE.hobbies.map((h, idx) => `    <span class="json-string">"${h}"</span>${idx < SITE.hobbies.length - 1 ? ',' : ''}`).join('\n')}
-  <span class="json-brace">]</span>,
-  <span class="json-key">"motto"</span>: <span class="json-string">"${SITE.motto}"</span>
-<span class="json-brace">}</span>`} /></pre>
-          </div>
-        </div>
-
-        <p class="about-description">
-          2024年に新卒で入社して、プロジェクト管理SaaSの開発をしています。
-          要件定義やDB設計から、実装・テスト・リリース後の運用まで一通り担当していて、
-          今はグループリーダーとして進捗管理やコードレビュー、新しく入った人のサポートもしています。
-          主に使っているのは Java / Spring Boot と TypeScript / React、インフラは AWS と Docker です。
-          最近は Claude Code を開発の流れにどう組み込むかをよく考えています。
-          休日はラーメンを食べに行ったり、温泉やサウナに行ったりしています。
         </p>
       </div>
+
+      <div class="window stats">
+        <span class="window-label">STATUS</span>
+        <dl class="stat-list">
+          {stats.map((s) => (
+            <div class="stat-row">
+              <dt class="stat-key">{s.key}</dt>
+              <dd class="stat-value">{s.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+
+    <div class="window about-message">
+      <p>
+        大阪出身、東京在住。2024年に新卒で入社して、プロジェクト管理SaaSの開発をしています。
+        要件定義やDB設計から、実装・テスト・リリース後の運用まで一通り担当していて、
+        今はグループリーダーとして進捗管理やコードレビュー、新しく入った人のサポートもしています。
+      </p>
+      <p>
+        主に使っているのは Java / Spring Boot と TypeScript / React、インフラは AWS と Docker です。
+        最近は Claude Code を開発の流れにどう組み込むかをよく考えています。
+      </p>
+      <p>休日はラーメンを食べに行ったり、温泉やサウナに行ったりしています。</p>
+      <span class="message-next blink" aria-hidden="true">▼</span>
     </div>
   </div>
 </section>
@@ -65,143 +60,121 @@ ${SITE.hobbies.map((h, idx) => `    <span class="json-string">"${h}"</span>${idx
 <style>
   .about-grid {
     display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 4rem;
-    align-items: start;
+    grid-template-columns: 260px 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
   }
 
-  .about-avatar-wrap {
+  .profile {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .avatar-frame {
-    position: relative;
-    width: 200px;
-    height: 200px;
-  }
-
-  .avatar-placeholder {
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    background: var(--bg-card);
-    border: 2px solid var(--neon-cyan);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: border-glow 6s ease-in-out infinite;
-    overflow: hidden;
+    width: 160px;
+    height: 160px;
+    border: 3px solid var(--line);
+    box-shadow: 4px 4px 0 var(--shadow);
+    background: var(--bg-deep);
   }
 
   .avatar-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 10px;
   }
 
-  .avatar-glow {
-    position: absolute;
-    inset: -20px;
-    border-radius: 20px;
-    background: radial-gradient(circle, rgba(0, 245, 255, 0.1) 0%, transparent 70%);
-    z-index: -1;
-    animation: glow-pulse 3s ease-in-out infinite;
+  .profile-name {
+    font-family: var(--font-pixel);
+    font-size: 1.15rem;
+    color: var(--text);
   }
 
   .status-badge {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--neon-green);
+    font-family: var(--font-pixel);
+    font-size: 0.85rem;
+    color: var(--green);
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.4rem 1rem;
-    border: 1px solid rgba(57, 255, 20, 0.3);
-    border-radius: 20px;
-    background: rgba(57, 255, 20, 0.05);
+    padding: 0.2rem 0.75rem;
+    border: 2px solid var(--green);
   }
 
   .status-dot {
     width: 8px;
     height: 8px;
-    border-radius: 50%;
-    background: var(--neon-green);
-    box-shadow: 0 0 6px var(--neon-green);
-    animation: glow-pulse 2s ease-in-out infinite;
+    background: var(--green);
   }
 
-  /* Terminal */
-  .terminal-window {
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid rgba(0, 245, 255, 0.15);
-    background: rgba(10, 10, 15, 0.8);
-    margin-bottom: 2rem;
+  .stats {
+    padding-top: 2.25rem;
   }
 
-  .terminal-header {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1rem;
-    background: rgba(26, 26, 46, 0.8);
-    border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+  .stat-list {
+    display: grid;
+    gap: 0.6rem;
   }
 
-  .terminal-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
+  .stat-row {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px dotted var(--line-dim);
   }
 
-  .dot-red { background: #ff5f57; }
-  .dot-yellow { background: #ffbd2e; }
-  .dot-green { background: #28c840; }
+  .stat-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
 
-  .terminal-title {
-    font-family: var(--font-mono);
+  .stat-key {
+    font-family: var(--font-pixel);
+    color: var(--gold);
+    letter-spacing: 0.08em;
+  }
+
+  .stat-value {
+    font-family: var(--font-pixel);
+    color: var(--text);
+    overflow-wrap: anywhere;
+  }
+
+  .about-message {
+    font-size: 1rem;
+    line-height: 2.1;
+    padding: 1.75rem 2rem 2rem;
+  }
+
+  .about-message p + p {
+    margin-top: 1rem;
+  }
+
+  .message-next {
+    position: absolute;
+    right: 1rem;
+    bottom: 0.4rem;
     font-size: 0.75rem;
-    color: var(--text-secondary);
-    margin-left: 0.5rem;
+    color: var(--gold);
   }
 
-  .terminal-body {
-    padding: 1.5rem;
-    overflow-x: auto;
-  }
-
-  .terminal-body pre {
-    margin: 0;
-  }
-
-  .terminal-body code {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    line-height: 1.8;
-  }
-
-  .json-brace { color: var(--text-secondary); }
-  .json-key { color: var(--neon-cyan); }
-  .json-string { color: var(--neon-green); }
-
-  .about-description {
-    color: var(--text-secondary);
-    line-height: 2;
-    font-size: 0.95rem;
-  }
-
-  @media (max-width: 768px) {
+  @media (max-width: 760px) {
     .about-grid {
       grid-template-columns: 1fr;
-      gap: 2rem;
     }
 
-    .about-avatar-wrap {
-      align-items: center;
+    .stat-row {
+      grid-template-columns: 5.5rem 1fr;
+      gap: 0.75rem;
+    }
+
+    .window.about-message,
+    .window.stats {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
     }
   }
 </style>

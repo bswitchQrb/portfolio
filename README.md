@@ -1,41 +1,25 @@
-# bee2
+# bswitchQrb
 
-Full-Stack Engineer / Tokyo, Japan
+Product Engineer / Osaka → Tokyo
 
 ## About
 
-フロントエンドからバックエンド、インフラまで何でも触るフルスタックエンジニア。
-Spring Boot での API 開発、React / Vue.js でのフロントエンド、AWS でのクラウド構築、
-WSL + Docker での Linux 開発環境、そして Claude を活用した AI 駆動開発まで。
-気になった技術はとりあえず試してみるスタイルで日々開発しています。
+大阪出身、東京在住。2024年に新卒で入社して、プロジェクト管理SaaSの開発をしています。
+要件定義やDB設計から、実装・テスト・リリース後の運用まで一通り担当していて、
+今はグループリーダーとして進捗管理やコードレビュー、新しく入った人のサポートもしています。
 
 ## Skills
 
-### Frontend
-- TypeScript
-- React
-- Vue.js
-- HTML / CSS
+- **Frontend**: TypeScript, React
+- **Backend**: Java / Spring Boot, MySQL, PostgreSQL
+- **DevOps & Tools**: AWS, Docker, Terraform, Git, Claude Code
 
-### Backend
-- Java / Spring Boot
-- SQL / DB
+## Certifications
 
-### DevOps & Cloud
-- AWS
-- Docker
-- Git
-- CI/CD
-
-### Also experienced with
-Astro, Svelte, Sass, Prisma, Redis, Firebase, Vercel, Nginx, Jest, Cypress, Figma, Storybook, GitHub Actions, Terraform
-
-## Interests
-- Web Development
-- Cloud / AWS
-- AI / Claude
-- Docker
+- AWS Certified AI Practitioner (2026.09)
 
 ## Links
+
+- [Portfolio](https://bswitchQrb.github.io/portfolio/)
 - [GitHub](https://github.com/bswitchQrb)
 - [Zenn](https://zenn.dev/b2)

@@ -1,19 +1,25 @@
 ---
+import { SITE } from '../config';
+
+const links = [
+  { href: '#about', label: 'About' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#contact', label: 'Links' },
+];
 ---
 
 <header class="header">
   <div class="container header-inner">
-    <a href="/" class="logo">
-      <span class="logo-bracket">&lt;</span>
-      <span class="logo-name">Portfolio</span>
-      <span class="logo-bracket">/&gt;</span>
+    <a href="#top" class="logo">
+      <span class="logo-mark" aria-hidden="true">◆</span>
+      {SITE.name}
     </a>
-    <nav class="nav">
-      <a href="#about" class="nav-link">About</a>
-      <a href="#experience" class="nav-link">Experience</a>
-      <a href="#skills" class="nav-link">Skills</a>
-      <a href="#projects" class="nav-link">Projects</a>
-      <a href="#contact" class="nav-link">Links</a>
+    <nav class="nav" aria-label="Main">
+      {links.map((link) => (
+        <a href={link.href} class="nav-link">{link.label}</a>
+      ))}
     </nav>
   </div>
 </header>
@@ -25,83 +31,89 @@
     left: 0;
     right: 0;
     z-index: 100;
-    padding: 1rem 0;
-    background: rgba(10, 10, 15, 0.8);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+    background: var(--bg-deep);
+    border-bottom: 3px solid var(--line-dim);
   }
 
   .header-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
   }
 
   .logo {
-    font-family: var(--font-mono);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: all 0.3s ease;
+    font-family: var(--font-pixel);
+    font-size: 1.15rem;
+    color: var(--text);
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .logo-mark {
+    color: var(--gold);
+    font-size: 0.85em;
   }
 
   .logo:hover {
-    text-shadow: var(--neon-cyan-glow);
-  }
-
-  .logo-bracket {
-    color: var(--neon-cyan);
-  }
-
-  .logo-name {
-    color: var(--text-primary);
+    color: var(--gold);
   }
 
   .nav {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .nav-link {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 0.5rem 0;
-    position: relative;
-    transition: all 0.3s ease;
+    font-family: var(--font-pixel);
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
   }
 
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--neon-cyan);
-    box-shadow: var(--neon-cyan-glow);
-    transition: width 0.3s ease;
+  .nav-link::before {
+    content: '▶';
+    font-size: 0.7em;
+    width: 1em;
+    visibility: hidden;
+    color: var(--gold);
   }
 
-  .nav-link:hover {
-    color: var(--neon-cyan);
-    text-shadow: var(--neon-cyan-glow);
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    color: var(--text);
   }
 
-  .nav-link:hover::after {
-    width: 100%;
+  .nav-link:hover::before,
+  .nav-link:focus-visible::before {
+    visibility: visible;
   }
 
-  @media (max-width: 640px) {
-    .nav {
-      gap: 1rem;
+  @media (max-width: 760px) {
+    .header-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.4rem;
+      padding-top: 0.6rem;
+      padding-bottom: 0.5rem;
     }
+
+    .nav {
+      width: 100%;
+      gap: 0.75rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
     .nav-link {
-      font-size: 0.75rem;
+      font-size: 0.85rem;
     }
   }
 </style>
