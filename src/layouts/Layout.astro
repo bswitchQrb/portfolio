@@ -46,6 +46,15 @@ const ogImage = new URL('/og.png', Astro.site).href;
       rel="stylesheet"
     />
     <title>{title}</title>
+    {/* Cloudflare Web Analytics（本番ビルドのみ） */}
+    {import.meta.env.PROD && (
+      <script
+        is:inline
+        type="module"
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "751bf9fafede4cc2b00c6a434e7dd275"}'
+      ></script>
+    )}
   </head>
   <body>
     <slot />
