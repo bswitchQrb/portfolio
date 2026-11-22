@@ -34,3 +34,33 @@ export const EXPERIENCE = [
 export const CERTIFICATIONS = [
   { date: "2026.09", name: "AWS Certified AI Practitioner" },
 ] as const;
+
+/** 個人開発の小さめの作品（Projects の下段に並べる） */
+export const SIDE_PROJECTS = [
+  {
+    name: "Onpu Quiz Bot",
+    tagline: "毎朝 1 問、五線譜の音符を当てる Discord bot",
+    points: [
+      "VexFlow で事前に生成した五線譜の画像と、ド〜シのボタンで出題",
+      "Discord の署名（Ed25519）を検証してから、回答を D1 に記録",
+      "/ranking・/stats と、管理者だけが使える出題モードの切り替え（/mode）",
+    ],
+    tech: ["TypeScript", "Cloudflare Workers", "D1", "Discord API", "VexFlow"],
+    links: [
+      { label: "GitHub", href: "https://github.com/bswitchQrb/onpu-quiz-bot" },
+      // クイズ用 Discord サーバーの招待リンク（無期限のもの）。空なら表示しない
+      { label: "Discord で遊ぶ", href: "" },
+    ],
+  },
+  {
+    name: "dev-alert-bot",
+    tagline: "個人開発の運用アラートを Discord に届ける bot",
+    points: [
+      "Render のデプロイ失敗を 15 分ごとに確認して通知（同じ失敗は 1 回だけ）",
+      "たまった Dependabot の PR を、毎朝リポジトリごとにまとめて通知",
+      "Render の API キーは読み取り専用の権限に絞り、シークレットで管理",
+    ],
+    tech: ["TypeScript", "Cloudflare Workers", "KV", "Cron Triggers"],
+    links: [{ label: "GitHub", href: "https://github.com/bswitchQrb/dev-alert-bot" }],
+  },
+] as const;

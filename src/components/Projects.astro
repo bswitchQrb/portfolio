@@ -1,4 +1,6 @@
 ---
+import { SIDE_PROJECTS } from '../config';
+
 const features = [
   {
     icon: '♫',
@@ -74,6 +76,35 @@ const techGroups = [
         </div>
       </div>
     </article>
+
+    <div class="side-projects">
+      {SIDE_PROJECTS.map((project) => (
+        <article class="window side-project">
+          <span class="window-label">SIDE PROJECT</span>
+          <h3 class="side-name">{project.name}</h3>
+          <p class="project-tagline">{project.tagline}</p>
+          <ul class="side-points">
+            {project.points.map((point) => (
+              <li>{point}</li>
+            ))}
+          </ul>
+          <div class="chip-row">
+            {project.tech.map((item) => (
+              <span class="chip chip--green">{item}</span>
+            ))}
+          </div>
+          <div class="side-links">
+            {project.links
+              .filter((link) => link.href)
+              .map((link) => (
+                <a href={link.href} target="_blank" rel="noopener" class="pixel-btn">
+                  {link.label} ↗
+                </a>
+              ))}
+          </div>
+        </article>
+      ))}
+    </div>
   </div>
 </section>
 
@@ -166,7 +197,66 @@ const techGroups = [
     letter-spacing: 0.1em;
   }
 
+  .side-projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 2rem;
+    margin-top: 3.5rem;
+  }
+
+  .side-project {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 2.25rem;
+  }
+
+  .side-name {
+    font-family: var(--font-pixel);
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: var(--text);
+    text-shadow: 3px 3px 0 var(--shadow);
+  }
+
+  .side-points {
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  .side-points li {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .side-points li::before {
+    content: '▸';
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .side-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+
   @media (max-width: 760px) {
+    .side-projects {
+      grid-template-columns: 1fr;
+    }
+
+    .window.side-project {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
     .window.project {
       padding-left: 1.25rem;
       padding-right: 1.25rem;
