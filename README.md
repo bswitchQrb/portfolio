@@ -31,7 +31,7 @@ Product Engineer / Osaka → Tokyo
 
 ## Blog
 
-記事は `src/content/blog/*.md` に置く（ファイル名がそのまま URL になる：`/portfolio/blog/<ファイル名>/`）。
+記事は `src/content/blog/*.md` に置く（ファイル名がそのまま URL になる：`https://bee2.dev/blog/<ファイル名>/`）。
 
 ```md
 ---

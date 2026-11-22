@@ -1,24 +1,23 @@
 ---
 import { SITE } from '../config';
 
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 // トップページではページ内スクロール、ブログなど他のページからはトップの各セクションへ移動する
-const isHome = Astro.url.pathname.replace(/\/$/, '') === base;
-const home = isHome ? '' : `${base}/`;
+const isHome = Astro.url.pathname.replace(/\/$/, '') === '/portfolio';
+const home = isHome ? '' : '/portfolio/';
 
 const links = [
   { href: `${home}#about`, label: 'About' },
   { href: `${home}#experience`, label: 'Experience' },
   { href: `${home}#skills`, label: 'Skills' },
   { href: `${home}#projects`, label: 'Projects' },
-  { href: `${base}/blog/`, label: 'Blog' },
+  { href: '/blog/', label: 'Blog' },
   { href: `${home}#contact`, label: 'Links' },
 ];
 ---
 
 <header class="header">
   <div class="container header-inner">
-    <a href={isHome ? '#top' : `${base}/`} class="logo">
+    <a href={isHome ? '#top' : '/portfolio/'} class="logo">
       <span class="logo-mark" aria-hidden="true">◆</span>
       {SITE.name}
     </a>
