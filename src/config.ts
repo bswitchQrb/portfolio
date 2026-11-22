@@ -38,6 +38,22 @@ export const CERTIFICATIONS = [
 /** 個人開発の小さめの作品（Projects の下段に並べる） */
 export const SIDE_PROJECTS = [
   {
+    name: "Tokyo Photo Map",
+    tagline: "写真を選ぶだけで、行った区や市にスタンプが押される東京のぬりつぶしマップ",
+    points: [
+      "写真の位置情報から区市をブラウザの中で判定。写真はサーバーに送らない",
+      "国土数値情報の境界データ（約10MB）を正規化・簡略化して約120KB に（判定の不一致は 0.2%）",
+      "区市ごとに思い出の写真を1枚 IndexedDB に残し、スタンプから見返せる",
+    ],
+    tech: ["TypeScript", "React", "d3-geo", "IndexedDB", "Vitest", "GitHub Pages"],
+    links: [
+      { label: "Live Demo", href: "https://bswitchqrb.github.io/tokyo-photo-map/" },
+      { label: "GitHub", href: "https://github.com/bswitchQrb/tokyo-photo-map" },
+    ],
+    // サンプルデータで撮影した画面（public/ からのパス）
+    screenshot: { src: "/images/projects/tokyo-photo-map.png", alt: "塗られた東京の地図と、23区・多摩の市のスタンプ帳" },
+  },
+  {
     name: "Onpu Quiz Bot",
     tagline: "毎朝 1 問、五線譜の音符を当てる Discord bot",
     points: [
