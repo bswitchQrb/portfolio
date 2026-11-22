@@ -344,3 +344,37 @@ footer[id] {
 .prose img {
   border: 3px solid var(--line-dim);
 }
+
+.prose .callout {
+  border: 3px solid var(--sky);
+  background: var(--window);
+  padding: 1rem 1.25rem;
+}
+
+.prose .callout--alert {
+  border-color: var(--coral);
+}
+
+.prose .callout > * + * {
+  margin-top: 0.75em;
+}
+
+.prose .callout > :first-child strong {
+  color: var(--sky);
+}
+
+.prose .callout--alert > :first-child strong {
+  color: var(--coral);
+}
+
+.prose .code-title {
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: -1.25em;
+  margin-top: 1.5em;
+  padding: 0.25rem 0.75rem;
+  border: 3px solid var(--line-dim);
+  border-bottom: none;
+  display: inline-block;
+}
