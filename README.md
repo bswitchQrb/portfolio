@@ -28,3 +28,17 @@ Product Engineer / Osaka → Tokyo
 ## Deploy
 
 デプロイ：Render Static Site（Build: `npm run build` / Publish: `dist`）
+
+## Blog
+
+記事は `src/content/blog/*.md` に置く（ファイル名がそのまま URL になる：`/portfolio/blog/<ファイル名>/`）。
+
+```md
+---
+title: "記事タイトル"
+description: "一覧と OGP に出る説明文"
+pubDate: 2026-11-22
+tags: ["Astro"]
+draft: true   # true の間は本番に出ない（npm run dev では表示される）
+---
+```
