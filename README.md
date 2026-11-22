@@ -21,6 +21,10 @@ Product Engineer / Osaka → Tokyo
 
 ## Links
 
-- [Portfolio](https://bswitchQrb.github.io/portfolio/)
+- [Portfolio](https://bee2.dev/portfolio/)
 - [GitHub](https://github.com/bswitchQrb)
 - [Zenn](https://zenn.dev/b2)
+
+## Deploy
+
+デプロイ：Render Static Site（Build: `npm run build` / Publish: `dist`）
