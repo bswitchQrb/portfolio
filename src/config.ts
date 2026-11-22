@@ -46,11 +46,9 @@ export const SIDE_PROJECTS = [
       "/ranking・/stats と、管理者だけが使える出題モードの切り替え（/mode）",
     ],
     tech: ["TypeScript", "Cloudflare Workers", "D1", "Discord API", "VexFlow"],
-    links: [
-      { label: "GitHub", href: "https://github.com/bswitchQrb/onpu-quiz-bot" },
-      // クイズ用 Discord サーバーの招待リンク（無期限のもの）。空なら表示しない
-      { label: "Discord で遊ぶ", href: "" },
-    ],
+    links: [{ label: "GitHub", href: "https://github.com/bswitchQrb/onpu-quiz-bot" }],
+    // Discord での実際の画面（public/ からのパス）。招待リンクは公開しない方針
+    screenshot: { src: "/images/projects/onpu-quiz-bot.png", alt: "Discord に投稿された五線譜の問題と、ド〜シの回答ボタン、回答結果" },
   },
   {
     name: "dev-alert-bot",
@@ -62,5 +60,6 @@ export const SIDE_PROJECTS = [
     ],
     tech: ["TypeScript", "Cloudflare Workers", "KV", "Cron Triggers"],
     links: [{ label: "GitHub", href: "https://github.com/bswitchQrb/dev-alert-bot" }],
+    screenshot: { src: "/images/projects/dev-alert-bot.png", alt: "Discord に届いた、たまっている Dependabot の PR のまとめ通知" },
   },
 ] as const;

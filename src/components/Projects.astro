@@ -83,6 +83,15 @@ const techGroups = [
           <span class="window-label">SIDE PROJECT</span>
           <h3 class="side-name">{project.name}</h3>
           <p class="project-tagline">{project.tagline}</p>
+          {project.screenshot && (
+            <img
+              src={project.screenshot.src}
+              alt={project.screenshot.alt}
+              class="side-shot"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
           <ul class="side-points">
             {project.points.map((point) => (
               <li>{point}</li>
@@ -94,13 +103,11 @@ const techGroups = [
             ))}
           </div>
           <div class="side-links">
-            {project.links
-              .filter((link) => link.href)
-              .map((link) => (
-                <a href={link.href} target="_blank" rel="noopener" class="pixel-btn">
-                  {link.label} ↗
-                </a>
-              ))}
+            {project.links.map((link) => (
+              <a href={link.href} target="_blank" rel="noopener" class="pixel-btn">
+                {link.label} ↗
+              </a>
+            ))}
           </div>
         </article>
       ))}
@@ -217,6 +224,13 @@ const techGroups = [
     font-size: 1.4rem;
     color: var(--text);
     text-shadow: 3px 3px 0 var(--shadow);
+  }
+
+  .side-shot {
+    width: 100%;
+    height: auto;
+    border: 3px solid var(--line-dim);
+    background: var(--bg-deep);
   }
 
   .side-points {
