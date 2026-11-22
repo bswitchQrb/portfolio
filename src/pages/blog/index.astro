@@ -1,0 +1,132 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE } from '../../config';
+import { formatDate, getPublishedPosts } from '../../lib/blog';
+
+const posts = await getPublishedPosts();
+---
+
+<Layout
+  title={`Blog | ${SITE.name}`}
+  description={`${SITE.name} の技術ブログ。個人開発やインフラ運用でやったことを書いています。`}
+>
+  <Header />
+  <main class="section blog-main">
+    <div class="container">
+      <h1 class="section-title">ADVENTURE LOG<span class="section-sub">Blog</span></h1>
+
+      {posts.length === 0 ? (
+        <p class="empty">まだ記事がありません。</p>
+      ) : (
+        <ul class="post-list">
+          {posts.map((post) => (
+            <li>
+              <a href={`/blog/${post.id}/`} class="window post-card">
+                <time datetime={post.data.pubDate.toISOString()} class="post-date">
+                  {formatDate(post.data.pubDate)}
+                  {post.data.draft && <span class="draft-badge">DRAFT</span>}
+                </time>
+                <h2 class="post-title">{post.data.title}</h2>
+                <p class="post-desc">{post.data.description}</p>
+                {post.data.tags.length > 0 && (
+                  <div class="chip-row">
+                    {post.data.tags.map((tag) => (
+                      <span class="chip chip--sky">{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <p class="rss">
+        <a href="/blog/rss.xml">RSS フィード</a>
+      </p>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .blog-main {
+    padding-top: 8rem;
+    min-height: 70vh;
+  }
+
+  .post-list {
+    list-style: none;
+    display: grid;
+    gap: 2rem;
+  }
+
+  .post-card {
+    display: block;
+    color: var(--text);
+    transition: transform 0.08s steps(1);
+  }
+
+  .post-card:hover,
+  .post-card:focus-visible {
+    color: var(--text);
+    background: var(--window-hi);
+  }
+
+  .post-card:hover .post-title,
+  .post-card:focus-visible .post-title {
+    color: var(--gold);
+  }
+
+  .post-date {
+    font-family: var(--font-pixel);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .draft-badge {
+    color: var(--coral);
+    border: 2px solid currentColor;
+    padding: 0 0.4rem;
+    font-size: 0.75rem;
+  }
+
+  .post-title {
+    font-family: var(--font-pixel);
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    margin: 0.4rem 0 0.6rem;
+  }
+
+  .post-desc {
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+  }
+
+  .empty,
+  .rss {
+    font-family: var(--font-pixel);
+    color: var(--text-dim);
+  }
+
+  .rss {
+    margin-top: 2.5rem;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 760px) {
+    .blog-main {
+      padding-top: 7rem;
+    }
+
+    .post-title {
+      font-size: 1.1rem;
+    }
+  }
+</style>
