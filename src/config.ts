@@ -38,6 +38,19 @@ export const CERTIFICATIONS = [
 /** 個人開発の小さめの作品（Projects の下段に並べる） */
 export const SIDE_PROJECTS = [
   {
+    name: "SwitchBot Panel",
+    tagline: "SwitchBot の家電を PC のブラウザから操作する、セルフホストの操作パネル",
+    points: [
+      "SwitchBot API の署名（HMAC-SHA256）はサーバー側で行い、トークンをブラウザに渡さない。依存パッケージなしの Node.js",
+      "Host ヘッダーの検査で DNS リバインディングを防ぎ、使わない鍵などは表示も操作もサーバー側で拒否",
+      "状態を取得できない赤外線の家電は最後の操作を覚えておき、ON の家電をカテゴリ別のタイルで光らせる",
+    ],
+    tech: ["JavaScript", "Node.js", "SwitchBot API", "Tailscale"],
+    links: [{ label: "GitHub", href: "https://github.com/bswitchQrb/switchbot-panel" }],
+    // デモモード（ダミーデータ）で撮影した画面（public/ からのパス）。自宅のデバイスは写さない
+    screenshot: { src: "/images/projects/switchbot-panel.png", alt: "照明・エアコン・扇風機のタイルと、室温・湿度・施錠状態を並べた操作パネル" },
+  },
+  {
     name: "Tokyo Photo Map",
     tagline: "写真を選ぶだけで、行った区や市にスタンプが押される東京のぬりつぶしマップ",
     points: [
