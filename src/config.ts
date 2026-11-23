@@ -40,11 +40,6 @@ export const SIDE_PROJECTS = [
   {
     name: "SwitchBot Panel",
     tagline: "SwitchBot の家電を PC のブラウザから操作する、セルフホストの操作パネル",
-    points: [
-      "SwitchBot API の署名（HMAC-SHA256）はサーバー側で行い、トークンをブラウザに渡さない。依存パッケージなしの Node.js",
-      "Host ヘッダーの検査で DNS リバインディングを防ぎ、使わない鍵などは表示も操作もサーバー側で拒否",
-      "状態を取得できない赤外線の家電は最後の操作を覚えておき、ON の家電をカテゴリ別のタイルで光らせる",
-    ],
     tech: ["JavaScript", "Node.js", "SwitchBot API", "Tailscale"],
     links: [{ label: "GitHub", href: "https://github.com/bswitchQrb/switchbot-panel" }],
     // デモモード（ダミーデータ）で撮影した画面（public/ からのパス）。自宅のデバイスは写さない
@@ -53,11 +48,6 @@ export const SIDE_PROJECTS = [
   {
     name: "Tokyo Photo Map",
     tagline: "写真を選ぶだけで、行った区や市にスタンプが押される東京のぬりつぶしマップ",
-    points: [
-      "写真の位置情報から区市をブラウザの中で判定。写真はサーバーに送らない",
-      "国土数値情報の境界データ（約10MB）を正規化・簡略化して約120KB に（判定の不一致は 0.2%）",
-      "区市ごとに思い出の写真を1枚 IndexedDB に残し、スタンプから見返せる",
-    ],
     tech: ["TypeScript", "React", "d3-geo", "IndexedDB", "Vitest", "GitHub Pages"],
     links: [
       { label: "Live Demo", href: "https://bswitchqrb.github.io/tokyo-photo-map/" },
@@ -69,11 +59,6 @@ export const SIDE_PROJECTS = [
   {
     name: "Onpu Quiz Bot",
     tagline: "毎朝 1 問、五線譜の音符を当てる Discord bot",
-    points: [
-      "VexFlow で事前に生成した五線譜の画像と、ド〜シのボタンで出題",
-      "Discord の署名（Ed25519）を検証してから、回答を D1 に記録",
-      "/ranking・/stats と、管理者だけが使える出題モードの切り替え（/mode）",
-    ],
     tech: ["TypeScript", "Cloudflare Workers", "D1", "Discord API", "VexFlow"],
     links: [{ label: "GitHub", href: "https://github.com/bswitchQrb/onpu-quiz-bot" }],
     // Discord での実際の画面（public/ からのパス）。招待リンクは公開しない方針
@@ -82,11 +67,6 @@ export const SIDE_PROJECTS = [
   {
     name: "dev-alert-bot",
     tagline: "個人開発の運用アラートを Discord に届ける bot",
-    points: [
-      "Render のデプロイ失敗を 15 分ごとに確認して通知（同じ失敗は 1 回だけ）",
-      "たまった Dependabot の PR を、毎朝リポジトリごとにまとめて通知",
-      "Render の API キーは読み取り専用の権限に絞り、シークレットで管理",
-    ],
     tech: ["TypeScript", "Cloudflare Workers", "KV", "Cron Triggers"],
     links: [{ label: "GitHub", href: "https://github.com/bswitchQrb/dev-alert-bot" }],
     screenshot: { src: "/images/projects/dev-alert-bot.png", alt: "Discord に届いた、たまっている Dependabot の PR のまとめ通知" },
