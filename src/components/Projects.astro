@@ -92,11 +92,13 @@ const techGroups = [
               decoding="async"
             />
           )}
-          <ul class="side-points">
-            {project.points.map((point) => (
-              <li>{point}</li>
-            ))}
-          </ul>
+          {project.points.length > 0 && (
+            <ul class="side-points">
+              {project.points.map((point) => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          )}
           <div class="chip-row">
             {project.tech.map((item) => (
               <span class="chip chip--green">{item}</span>
