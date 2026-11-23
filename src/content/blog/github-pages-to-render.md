@@ -14,6 +14,7 @@ draft: true
 |---|---|
 | `https://bee2.dev/` | `/portfolio/` へリダイレクト |
 | `https://bee2.dev/portfolio/` | ポートフォリオ（Astro） |
+| `https://bee2.dev/blog/` | ブログ（Astro） |
 | `https://bee2.dev/onpu/` | おんぷクイズ（React SPA） |
 
 おんぷクイズはすでに Render の Static Site として動いていて、`onpu.bee2.dev` も設定済みでした。なので、**ポートフォリオ用の Render サービスを 1 つ作って、`/onpu/` 以下は既存の onpu サービスへリライトする**構成にしました。
@@ -22,23 +23,32 @@ draft: true
 bee2.dev ──▶ Render: portfolio (Static Site)
                ├─ /             → 301 /portfolio/
                ├─ /portfolio/*  → 自分のファイル
+               ├─ /blog/*       → 自分のファイル
                └─ /onpu/*       → rewrite ──▶ Render: onpu (Static Site)
 ```
 
 ## Astro の設定
 
-ポイントは `outDir` です。Render の Publish Directory を `dist` にして、その下に `portfolio/` ができるようにビルドします。こうすると、ファイルの配置と URL がそのまま一致します。
+最初は `base: '/portfolio'` と `outDir: './dist/portfolio'` で `/portfolio/` の下にだけビルドしていましたが、あとでブログを `/blog/` に足すときに、ルートからビルドする形に変えました。
+
+設定は `site` だけです。
 
 ```js
 // astro.config.mjs
 export default defineConfig({
   site: 'https://bee2.dev',
-  base: '/portfolio',
-  outDir: './dist/portfolio',
 });
 ```
 
-`site` と `base` を正しく設定しておけば、canonical や OGP の URL は `Astro.site` から組み立てられるので、ドメインを変えても追従してくれます。
+ページを `src/pages/portfolio/` と `src/pages/blog/` に置くと、ビルド後は `dist/portfolio/` と `dist/blog/` になります。Render の Publish Directory を `dist` にしておけば、ファイルの配置と URL がそのまま一致します。
+
+```
+src/pages/
+├─ portfolio/index.astro  → /portfolio/
+└─ blog/                  → /blog/
+```
+
+`site` を正しく設定しておけば、canonical や OGP の URL は `Astro.site` から組み立てられるので、ドメインを変えても追従してくれます。
 
 ## Render のリライトでハマったこと
 
@@ -88,11 +98,11 @@ GitHub Pages の `bswitchqrb.github.io/onpu/` には、新しい URL へ飛ば�
 
 - **CI 必須化**：GitHub の Rulesets で、main へのマージにはビルドの成功を必須にした
 - **Dependabot**：毎週月曜の朝に、minor / patch をまとめた PR が来るように設定
-- **自動マージ**：PR を作ったら auto-merge を予約しておき、CI が通ったら自動でマージ。メジャー更新だけは手で確認する
+- **自動マージ**：PR を作ったら手で auto-merge を予約しておき、CI が通ったら自動でマージ。メジャー更新だけは手で確認する
 
 ## まとめ
 
-- Astro は `base` と `outDir` を合わせると、Render の Static Site にそのまま載せられる
+- Astro はルートからビルドして、`/portfolio/` と `/blog/` をページのパスで分けると、Render の Static Site にそのまま載せられる
 - Render の外部リライトを使うと、別サービスを同じドメインのパスにぶら下げられる
 - ただし、末尾スラッシュの正規化と、ヘッダーが中継先のものになる点には注意
 
