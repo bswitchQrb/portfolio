@@ -153,7 +153,7 @@ postgresql://postgres:[YOUR-PASSWORD]@db.xxxxxxxxxxxx.supabase.co:5432/postgres
 Caused by: java.net.SocketException: Network is unreachable
 ```
 
-**原因：** Render の Free tier は **IPv6** で外部に接続しようとしますが、Supabase の Direct connection は IPv6 に対応していません。
+**原因：** Supabase の Direct connection は **IPv6 にしか対応していません**が、Render からは IPv6 で外部に接続できません。
 
 **解決策：** Supabase の **Session Pooler** を使う。
 
@@ -288,7 +288,7 @@ config.setAllowedOrigins(Arrays.asList(allowedOrigins.split(",")));
 
 ハマりポイントを整理すると：
 
-1. **Render Free tier は IPv6** → Supabase は Session Pooler を使う
+1. **Supabase の Direct connection は IPv6 のみ、Render は IPv6 で外に出られない** → Session Pooler（IPv4 対応）を使う
 2. **gradle-wrapper.jar が .gitignore で除外** → 例外ルールを追加
 3. **Vite の base path** → `build.outDir` で出力先を合わせる
 4. **SPA ルーティング** → Rewrite Rule を設定

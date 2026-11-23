@@ -3,7 +3,7 @@ export const SITE = {
   role: "Product Engineer",
   location: "Tokyo, Japan",
   hometown: "Osaka, Japan",
-  company: "Project Management SaaS since 2024",
+  company: "Project Management SaaS Company",
   interests: ["Web Development", "Cloud / AWS", "AI / Claude", "Docker"],
   hobbies: ["Ramen", "Onsen", "Sauna"],
   github: "https://github.com/bswitchQrb",
@@ -22,9 +22,7 @@ export const EXPERIENCE = [
     highlights: [
       { title: "ビルドツールの移行", desc: "webpack から Rsbuild に移行。コードを直してから画面に反映されるまでがかなり速くなりました" },
       { title: "E2E テストの導入", desc: "Playwright を入れて、手動で確認していたテストの一部を自動化" },
-      { title: "MySQL のバージョンアップ", desc: "開発基盤のバージョンアップ作業を担当" },
       { title: "グループリーダー", desc: "3年目からリーダーに。進捗・工数の管理、コードレビュー、新人のオンボーディングを担当" },
-      { title: "新機能の開発", desc: "要件定義からリリースまで、新機能の開発を継続して担当" },
       { title: "Claude Code の活用", desc: "チームの開発フローに AI ツールを取り入れています" },
     ],
     stack: ["Java", "Spring Boot", "TypeScript", "React", "MySQL", "AWS", "Docker", "Terraform", "Playwright", "Rsbuild", "Claude Code"],
@@ -69,6 +67,5 @@ export const SIDE_PROJECTS = [
     tagline: "個人開発の運用アラートを Discord に届ける bot",
     tech: ["TypeScript", "Cloudflare Workers", "KV", "Cron Triggers"],
     links: [{ label: "GitHub", href: "https://github.com/bswitchQrb/dev-alert-bot" }],
-    screenshot: { src: "/images/projects/dev-alert-bot.png", alt: "Discord に届いた、たまっている Dependabot の PR のまとめ通知" },
   },
 ] as const;
