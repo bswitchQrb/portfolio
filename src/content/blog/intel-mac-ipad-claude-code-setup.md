@@ -74,16 +74,7 @@ tmux    3.8                ~/.config/mise/config.toml  latest
 
 ### ついでに片付けたもの
 
-- **Anaconda（4GB）**：`.zshrc` の `conda initialize` のせいで、シェルを開くたびに base 環境が有効になっていました。ブロックを外して本体ごと削除しました
 - **`/opt/homebrew` の PATH**：Apple Silicon 用のパスが残っていました。Intel Mac には存在しないパスなので消しました
-
-<aside class="callout">
-
-**ハマりポイント：`alias nc='npm ci'`**
-
-dotfiles に `nc` を `npm ci` にする alias があって、netcat（`nc`）でポートの疎通を確認しようとしたら `npm ci` が走りました。標準コマンドと同じ名前の alias は危ないので、消しました。
-
-</aside>
 
 ## 2. Ghostty と herdr
 
@@ -131,7 +122,7 @@ Tailscale は、自分の端末どうしを `100.x.y.z` の私設ネットワー
 
 **ハマりポイント：100.64.x.x は Tailscale の IP とは限らない**
 
-Mac の `en0` に `100.64.2.31` が付いていたので、Tailscale は動いていると思い込んでいました。実際には回線側の CGNAT のアドレスで、Tailscale は `Stopped` のままでした。CLI で状態を確認するのが確実です。
+Mac に `100.64.x.x` のアドレスが付いていたので、Tailscale は動いていると思い込んでいました。実際には回線側の CGNAT のアドレスで、Tailscale は `Stopped` のままでした。CLI で状態を確認するのが確実です。
 
 ```bash
 /Applications/Tailscale.app/Contents/MacOS/Tailscale status
