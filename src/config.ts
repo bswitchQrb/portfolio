@@ -78,11 +78,7 @@ export const SIDE_PROJECTS = [
   {
     name: "dev-alert-bot",
     tagline: "個人開発の運用アラートを Discord に届ける bot",
-    points: [
-      "Render のデプロイ失敗を 15 分ごとに確認して通知（同じ失敗は 1 回だけ）",
-      "たまった Dependabot の PR を、毎朝リポジトリごとにまとめて通知",
-      "Render の API キーは読み取り専用の権限に絞り、シークレットで管理",
-    ],
+    points: [],
     tech: ["TypeScript", "Cloudflare Workers", "KV", "Cron Triggers"],
     links: [{ label: "GitHub", href: "https://github.com/bswitchQrb/dev-alert-bot" }],
     screenshot: { src: "/images/projects/dev-alert-bot.png", alt: "Discord に届いた、たまっている Dependabot の PR のまとめ通知" },
